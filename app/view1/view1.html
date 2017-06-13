@@ -1,1 +1,52 @@
-<p>This is the partial for view 1.</p>
+<div class="col-lg-8 col-lg-offset-2">
+
+    <h1>Excercise from Prosoft Nearshore</h1>
+
+    <form name="formCalendar">
+        <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="date" ng-model="data.startDate" class="form-control" id="startDate" placeholder="Date">
+        </div>
+        <div class="form-group">
+            <label for="days">Number of Days</label>
+            <input type="number" ng-model="data.days" class="form-control" id="days" placeholder="# of days" required>
+        </div>
+        <div class="form-group">
+            <label for="countryCode">Country Code</label>
+            <input type="text" ng-model="data.countryCode" class="form-control" id="countryCode" placeholder="i.e. US" required>
+        </div>
+        <button type="submit" ng-click="createCalendar()" class="btn btn-default" ng-disabled="formCalendar.$invalid">Submit</button>
+    </form>
+
+
+    <!-- Calendar result -->
+    <div class="table-responsive" ng-repeat="cal in calendars track by $index">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>S</th>
+                <th>M</th>
+                <th>T</th>
+                <th>W</th>
+                <th>T</th>
+                <th>F</th>
+                <th>S</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td colspan="7" class="text-center">Month: {{cal[0].month}} Year {{cal[0].year}}</td>
+            </tr>
+                <tr ng-repeat="day in cal">
+                    <td>Date {{day.date}}</td>
+                    <td>Day of the week {{day.day}}</td>
+                    <td>is week day? {{day.isWeekDay}}</td>
+                    <td>is holidays? {{day.isHolidays}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
